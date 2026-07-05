@@ -78,6 +78,17 @@ Framework conventions, file placement, naming, and a short canonical code exampl
 > `metadata` / `license` はランタイムが解釈しない**ドキュメント規約**。実際に
 > トリガリングへ効くのは `name` と `description`(+ `when_to_use`)のみ。
 
+### AIシステム向けの任意フィールド `iso25059`
+
+AI/MLシステムをテストするスキルは、ISO/IEC 25059:2023(25010のAI拡張)の特性を
+`metadata.iso25059` に任意で列挙してよい。`iso25010` には親特性(functional-suitability 等)を、
+`iso25059` にAI固有特性(kebab-case)を書く。CIチェックは `iso25010`/`mode` のみ必須検証し、
+`iso25059` は追加のトレーサビリティ情報として扱う(検証対象外)。
+
+許容値の例: `ai-functional-correctness` / `functional-adaptability` / `ai-robustness` /
+`user-controllability` / `transparency` / `intervenability` /
+`societal-ethical-risk-mitigation`
+
 ## チェックリスト(PR前)
 
 - [ ] `skills/<skill-name>/SKILL.md` の1階層に配置した(中間カテゴリフォルダなし)

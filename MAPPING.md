@@ -40,6 +40,25 @@
 | §5.1 テスト計画 | テスト戦略、entry/exit criteria | test-strategy-doc |
 | §5.2 リスクマネジメント | リスクベースドテスト、プロダクトリスク分析 | risk-based-testing |
 | §5.3 テストモニタリング | メトリクス | (予定: qa-metrics) |
+| CT-AI v2.0 | AIベースシステムのテスト(入力データ/モデル/開発、メタモルフィック、ドリフト、敵対的、GenAI §4.2) | ml-system-testing, llm-application-testing |
+
+## AI/MLシステム × ISO/IEC 25059 × ISTQB CT-AI v2.0
+
+ISO/IEC 25059:2023 は ISO/IEC 25010 を AI 向けに拡張した品質モデル。CT-AI v2.0 第2章が
+この特性を参照する。各行の「拡張元」は 25010 の親特性。
+
+| ISO/IEC 25059 の特性(2023) | 拡張元(25010) | 対応スキル |
+|---|---|---|
+| AI functional correctness(AI機能正確性) | 機能適合性 | ml-system-testing, llm-application-testing |
+| Functional adaptability(機能適応性) | 機能適合性 | ml-system-testing |
+| AI robustness(AIロバスト性) | 信頼性 | ml-system-testing, llm-application-testing |
+| User controllability(ユーザー制御性) | 相互作用能力 | (予定) |
+| Transparency(透明性) | 相互作用能力/満足性 | llm-application-testing |
+| Intervenability(介入可能性) | セキュリティ | (予定) |
+| Societal & ethical risk mitigation(社会的・倫理的リスク低減) | 利用時のリスク回避性 | (予定: fairness/bias 深掘り) |
+
+> ⚠️ 注記: ROC/AUC・ペアワイズ(組合せ)テスト・automation bias は CT-AI **v2.0** の本文には
+> 含まれない(v2.0で整理・削除)。metric は confusion matrix 由来の accuracy/precision/recall/F1。
 
 ## 関連規格
 
@@ -50,3 +69,6 @@
 - **ISTQB CT-PT(Certified Tester — Performance Testing)** — performance-testing のテストタイプ体系。
 - **ISO/IEC 25023:2016** — 製品品質の測定(保守性・性能効率性などの定量指標)。
 - **機能安全規格**(IEC 61508 / ISO 26262 / IEC 62304 / DO-178C)— 規制ドメインでの safety-analysis の上位規格。
+- **ISTQB CT-AI v2.0** / **ISO/IEC 25059:2023** — ml-system-testing・llm-application-testing の基準。
+- **OWASP Top 10 for LLM Applications(2025)** — llm-application-testing のセキュリティ/レッドチーム基準。
+- **ISTQB CT-GenAI** — "GenAIを使ってテストする"側の参考(製品としてのLLM検証の基準ではない)。

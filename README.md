@@ -49,7 +49,9 @@ qa-skills/
     ├── decision-table-testing/SKILL.md
     ├── state-transition-testing/SKILL.md
     ├── exploratory-testing/SKILL.md
-    └── risk-based-testing/SKILL.md
+    ├── risk-based-testing/SKILL.md
+    ├── ml-system-testing/SKILL.md
+    └── llm-application-testing/SKILL.md
 ```
 
 ## スキルの構造
@@ -96,11 +98,14 @@ metadata:
 | state-transition-testing | Functional Suitability(機能適合性) | §4.2.4 | design + impl |
 | exploratory-testing | 横断的(発見) | §4.4.2 | design |
 | risk-based-testing | 全9特性でリスク分類 | §5.2 | design |
+| ml-system-testing | AI: 機能適合性・信頼性(25059) | CT-AI v2.0 | design + impl |
+| llm-application-testing | AI: 機能適合性・セキュリティ(25059) | CT-AI v2.0 §4.2 | design + impl |
 
 ISO/IEC 25010:2023 の**9品質特性すべて**に対応し、ISTQB CTFL v4.0 の**主要なテスト設計技法
-(§4.2 ブラックボックス・§4.4 経験ベース)とリスクマネジメント(§5.2)**も揃った。
-残りは §5.3 テストモニタリング(メトリクス)など。フロントマターと本表・MAPPING.md の
-同期は `scripts/check_skills.py`(CIで実行)が検証する。
+(§4.2 ブラックボックス・§4.4 経験ベース)とリスクマネジメント(§5.2)**、さらに **AIシステムの
+テスト(ISTQB CT-AI v2.0 / ISO/IEC 25059)**も揃った。残りは §5.3 テストモニタリング
+(メトリクス)など。フロントマターと本表・MAPPING.md の同期は
+`scripts/check_skills.py`(CIで実行)が検証する。
 
 ## Installation
 
