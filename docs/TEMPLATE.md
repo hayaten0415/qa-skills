@@ -87,3 +87,4 @@ Framework conventions, file placement, naming, and a short canonical code exampl
 - [ ] MAPPING.md に行を追加し、frontmatter と同期させた
 - [ ] Anti-Patterns にLLM失敗モード対策を最低1つ入れた
 - [ ] 本文500行以内(超える場合は同ディレクトリの `references/` に分割)
+- [ ] `python3 scripts/check_skills.py` がパスする(frontmatter検証＋MAPPING/README同期。CIでも実行される)

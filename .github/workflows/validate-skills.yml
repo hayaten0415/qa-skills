@@ -1,0 +1,27 @@
+name: validate-skills
+
+on:
+  push:
+    paths:
+      - 'skills/**'
+      - 'MAPPING.md'
+      - 'README.md'
+      - 'scripts/check_skills.py'
+      - '.github/workflows/validate-skills.yml'
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'MAPPING.md'
+      - 'README.md'
+      - 'scripts/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Dependency-free: stdlib only, no pip install needed.
+      - run: python3 scripts/check_skills.py
