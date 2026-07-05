@@ -44,7 +44,12 @@ qa-skills/
     ├── accessibility-audit/SKILL.md
     ├── security-testing/SKILL.md
     ├── maintainability-review/SKILL.md
-    └── safety-analysis/SKILL.md
+    ├── safety-analysis/SKILL.md
+    ├── equivalence-partitioning/SKILL.md
+    ├── decision-table-testing/SKILL.md
+    ├── state-transition-testing/SKILL.md
+    ├── exploratory-testing/SKILL.md
+    └── risk-based-testing/SKILL.md
 ```
 
 ## スキルの構造
@@ -86,10 +91,16 @@ metadata:
 | security-testing | Security(セキュリティ) | §2.2.1 | design + impl |
 | maintainability-review | Maintainability(保守性) | §2.2.1 | design + impl |
 | safety-analysis | Safety(安全性) | — | design + impl |
+| equivalence-partitioning | Functional Suitability(機能適合性) | §4.2.1 | design + impl |
+| decision-table-testing | Functional Suitability(機能適合性) | §4.2.3 | design + impl |
+| state-transition-testing | Functional Suitability(機能適合性) | §4.2.4 | design + impl |
+| exploratory-testing | 横断的(発見) | §4.4.2 | design |
+| risk-based-testing | 全9特性でリスク分類 | §5.2 | design |
 
-ISO/IEC 25010:2023 の**9品質特性すべてに対応するスキルが揃った**(機能適合性・互換性・柔軟性は
-今後さらに技法を追加予定)。テスト設計技法(同値分割・デシジョンテーブル・状態遷移)と
-プロセス系(リスクベースドテスト・メトリクス)は引き続き拡充する。
+ISO/IEC 25010:2023 の**9品質特性すべて**に対応し、ISTQB CTFL v4.0 の**主要なテスト設計技法
+(§4.2 ブラックボックス・§4.4 経験ベース)とリスクマネジメント(§5.2)**も揃った。
+残りは §5.3 テストモニタリング(メトリクス)など。フロントマターと本表・MAPPING.md の
+同期は `scripts/check_skills.py`(CIで実行)が検証する。
 
 ## Installation
 

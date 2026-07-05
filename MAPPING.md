@@ -32,13 +32,13 @@
 | §1 テストの基礎 | テストの7原則、QAとテスト | test-strategy-doc(原則を戦略に反映) |
 | §2 SDLC全体を通してのテスト | テストレベル・テストタイプ | cross-browser-testing, flexibility-testing, performance-testing, reliability-testing, security-testing, accessibility-audit, maintainability-review(§2.2.1 非機能テストタイプ) |
 | CT-PT 性能テスト | 負荷/ストレス/スパイク/耐久/スケーラビリティ | performance-testing |
-| §4.2.1 同値分割法 | | (予定: equivalence-partitioning) |
-| §4.2.2 境界値分析 | | boundary-value-analysis |
-| §4.2.3 デシジョンテーブルテスト | | (予定: decision-table-testing) |
-| §4.2.4 状態遷移テスト | | (予定: state-transition-testing) |
-| §4.4 経験ベースのテスト技法 | 探索的テスト等 | (予定: exploratory-testing) |
+| §4.2.1 同値分割法 | ブラックボックス技法 | equivalence-partitioning |
+| §4.2.2 境界値分析 | ブラックボックス技法 | boundary-value-analysis |
+| §4.2.3 デシジョンテーブルテスト | ブラックボックス技法 | decision-table-testing |
+| §4.2.4 状態遷移テスト | ブラックボックス技法 | state-transition-testing |
+| §4.4.2 探索的テスト | 経験ベース技法(SBTM) | exploratory-testing |
 | §5.1 テスト計画 | テスト戦略、entry/exit criteria | test-strategy-doc |
-| §5.2 リスク分析 | リスクベースドテスト | (予定: risk-based-testing) |
+| §5.2 リスクマネジメント | リスクベースドテスト、プロダクトリスク分析 | risk-based-testing |
 | §5.3 テストモニタリング | メトリクス | (予定: qa-metrics) |
 
 ## 関連規格
