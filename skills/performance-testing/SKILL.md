@@ -8,8 +8,10 @@ description: >-
   "throughput," "p95 latency," "how many concurrent users can it handle," or
   before a launch/scaling event. Produces a workload model + SLO-based test plan
   (design mode) and runnable k6/JMeter/Gatling scripts with CI thresholds
-  (implementation mode). Not for: single-request profiling or algorithmic Big-O —
-  that's code optimization. Related: reliability-testing, test-strategy-doc.
+  (implementation mode). This skill measures capacity/latency — the load at which the
+  system degrades. Not for: crash/hang and recovery AFTER a fault — use
+  reliability-testing; or single-request profiling / algorithmic Big-O (code
+  optimization). Related: reliability-testing, test-strategy-doc.
 license: MIT
 metadata:
   version: "1.0"

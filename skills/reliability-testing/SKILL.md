@@ -3,13 +3,15 @@ name: reliability-testing
 description: >-
   Design and implement reliability and resilience tests — recovery, failover, fault
   injection / chaos experiments, and endurance — for the ISO/IEC 25010:2023
-  Reliability characteristic (faultlessness, availability, fault tolerance,
-  recoverability). Use when: "reliability," "resilience," "信頼性," "chaos testing,"
-  "failover," "disaster recovery," "what happens if the DB goes down," "memory leak
-  over time," or defining SLOs/error budgets. Produces a resilience test plan with a
+  Reliability characteristic. Use when: "reliability," "resilience," "信頼性," "chaos
+  testing," "failover," "disaster recovery," "what happens if the DB goes down," or
+  defining SLOs/error budgets. Produces a resilience test plan with a
   steady-state hypothesis (design mode) and fault-injection experiments / recovery
-  test scripts (implementation mode). Not for: pure throughput/latency under load —
-  use performance-testing. Related: performance-testing, test-strategy-doc.
+  test scripts (implementation mode). This skill covers recovery AFTER a fault. Not for:
+  finding the load level at which it falls over or throughput/latency SLOs — use
+  performance-testing; or guarding intentional destructive/irreversible actions
+  (bulk-delete, kill switch) — use safety-analysis. Related: performance-testing,
+  safety-analysis, test-strategy-doc.
 license: MIT
 metadata:
   version: "1.0"

@@ -5,9 +5,12 @@ Dependency-free (Python 3 stdlib only). Run locally or in CI:
 
     python3 scripts/check_skills.py
 
-Exits non-zero if any skill has malformed frontmatter, an out-of-enum
-iso25010/mode value, an over-long description, or is missing from the
-traceability docs. Keeps frontmatter <-> MAPPING.md in sync as skills grow.
+Enforces the Anthropic Agent Skills spec (name <= 64 chars, description <= 1024
+chars, third-person, no XML tags) plus this repo's conventions (iso25010/mode
+enums, MAPPING.md/README.md sync). Errors fail the build; WARN lines are advisory
+(e.g. over-long descriptions that still fit the hard limit).
+
+Spec: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
 """
 import glob
 import os
@@ -16,15 +19,24 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# ISO/IEC 25010:2023 nine characteristics (kebab-case) + the "all" shorthand
-# allowed for cross-cutting skills (e.g. test-strategy-doc).
+# ISO/IEC 25010:2023 — the nine product-quality characteristics (kebab-case).
+# Cross-cutting skills must enumerate the characteristics they touch explicitly
+# (no "all" shorthand — the value is machine-readable coverage data).
 ALLOWED_ISO = {
     "functional-suitability", "performance-efficiency", "compatibility",
     "interaction-capability", "reliability", "security", "maintainability",
-    "flexibility", "safety", "all",
+    "flexibility", "safety",
 }
 ALLOWED_MODE = {"design", "implementation"}
-DESC_MAX = 1536  # Claude Code truncates description (+when_to_use) at this length
+
+# Anthropic Agent Skills frontmatter spec limits.
+NAME_MAX = 64
+DESC_MAX = 1024
+RESERVED_NAME_WORDS = ("anthropic", "claude")
+NAME_RE = re.compile(r"^[a-z0-9-]+$")
+XML_TAG_RE = re.compile(r"<[A-Za-z/!][^>]*>")
+FIRST_SECOND_PERSON_RE = re.compile(r"\b(I can|I will|I'll|you can|you will|you'll|we can|we will)\b", re.I)
+DESC_SOFT_MAX = 900  # advisory: warn when approaching the 1024 hard limit
 
 
 def frontmatter(text):
@@ -33,15 +45,25 @@ def frontmatter(text):
 
 
 def get_scalar(fm, key):
-    m = re.search(rf"^{key}:\s*(.*)$", fm, re.M)
+    m = re.search(rf"^{re.escape(key)}:\s*(.*)$", fm, re.M)
     return m.group(1).strip() if m else None
 
 
-def get_inline_list(fm, key):
-    m = re.search(rf"^\s*{key}:\s*\[(.*?)\]", fm, re.M)
-    if not m:
-        return None
-    return [x.strip() for x in m.group(1).split(",") if x.strip()]
+def get_list(fm, key):
+    """Parse a YAML value that is a list, accepting BOTH inline and block styles.
+
+    inline:  key: [a, b]
+    block:   key:
+               - a
+               - b
+    """
+    inline = re.search(rf"^[ \t]*{re.escape(key)}:\s*\[(.*?)\]\s*$", fm, re.M)
+    if inline:
+        return [x.strip() for x in inline.group(1).split(",") if x.strip()]
+    block = re.search(rf"^[ \t]*{re.escape(key)}:\s*$\n((?:[ \t]+-\s*.*\n?)+)", fm, re.M)
+    if block:
+        return [i.strip() for i in re.findall(r"^[ \t]+-\s*(.+?)\s*$", block.group(1), re.M) if i.strip()]
+    return None
 
 
 def get_description(fm):
@@ -54,52 +76,63 @@ def get_description(fm):
 
 
 def main():
-    errors = []
+    errors, warnings = [], []
     skill_paths = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
     if not skill_paths:
         print("No skills found under skills/*/SKILL.md")
         return 1
 
-    names = []
-    covered = set()
+    names, covered = [], set()
     for path in skill_paths:
         d = os.path.basename(os.path.dirname(path))
         with open(path, encoding="utf-8") as fh:
-            text = fh.read()
-        fm = frontmatter(text)
+            fm = frontmatter(fh.read())
         if fm is None:
             errors.append(f"{d}: missing or malformed frontmatter block")
             continue
 
         name = get_scalar(fm, "name")
+        names.append(name or d)
         if name != d:
             errors.append(f"{d}: name '{name}' does not match directory '{d}'")
-        names.append(name or d)
+        if name:
+            if len(name) > NAME_MAX:
+                errors.append(f"{d}: name {len(name)} chars exceeds {NAME_MAX}")
+            if not NAME_RE.match(name):
+                errors.append(f"{d}: name must be lowercase letters/numbers/hyphens only")
+            if any(w in name.lower() for w in RESERVED_NAME_WORDS):
+                errors.append(f"{d}: name contains a reserved word {RESERVED_NAME_WORDS}")
 
         desc = get_description(fm)
         if not desc:
-            errors.append(f"{d}: missing description")
-        elif len(desc) > DESC_MAX:
-            errors.append(f"{d}: description {len(desc)} chars exceeds {DESC_MAX}")
+            errors.append(f"{d}: missing/empty description")
+        else:
+            if len(desc) > DESC_MAX:
+                errors.append(f"{d}: description {len(desc)} chars exceeds hard limit {DESC_MAX}")
+            elif len(desc) > DESC_SOFT_MAX:
+                warnings.append(f"{d}: description {len(desc)} chars — approaching {DESC_MAX} hard limit; tighten or split")
+            if XML_TAG_RE.search(desc):
+                errors.append(f"{d}: description must not contain XML tags")
+            if FIRST_SECOND_PERSON_RE.search(desc):
+                warnings.append(f"{d}: description should be third person (found first/second-person phrasing)")
 
-        iso = get_inline_list(fm, "iso25010")
+        iso = get_list(fm, "iso25010")
         if not iso:
-            errors.append(f"{d}: missing metadata.iso25010 inline list")
+            errors.append(f"{d}: missing metadata.iso25010 list")
         else:
             bad = sorted(set(iso) - ALLOWED_ISO)
             if bad:
                 errors.append(f"{d}: iso25010 has invalid value(s): {bad}")
             covered.update(iso)
 
-        mode = get_inline_list(fm, "mode")
+        mode = get_list(fm, "mode")
         if not mode:
-            errors.append(f"{d}: missing metadata.mode inline list")
+            errors.append(f"{d}: missing metadata.mode list")
         else:
             bad = sorted(set(mode) - ALLOWED_MODE)
             if bad:
                 errors.append(f"{d}: mode has invalid value(s): {bad}")
 
-    # Traceability sync: every skill must be referenced in both docs.
     with open(os.path.join(ROOT, "MAPPING.md"), encoding="utf-8") as fh:
         mapping = fh.read()
     with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as fh:
@@ -111,9 +144,11 @@ def main():
             errors.append(f"{n}: not referenced in README.md")
 
     print(f"Checked {len(skill_paths)} skills.")
-    missing = sorted((ALLOWED_ISO - {"all"}) - covered)
+    missing = sorted(ALLOWED_ISO - covered)
     if missing:
         print(f"Note: ISO 25010 characteristics with no dedicated skill: {missing}")
+    for w in warnings:
+        print(f"  WARN: {w}")
 
     if errors:
         print("\nFAIL:")

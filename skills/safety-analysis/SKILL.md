@@ -9,8 +9,9 @@ description: >-
   people/property/environment or perform irreversible actions. Produces a hazard
   analysis + safety test plan (design mode) and fail-safe / guardrail tests
   (implementation mode). For regulated safety-critical domains, defers to functional
-  safety standards. Not for: security-from-attackers — use security-testing. Related:
-  reliability-testing, security-testing.
+  safety standards. Not for: recovery/availability after infrastructure faults (DB/node
+  down) — use reliability-testing; or security-from-attackers — use security-testing.
+  Related: reliability-testing, security-testing.
 license: MIT
 metadata:
   version: "1.0"
@@ -32,6 +33,19 @@ integration** — scaled to the product's actual hazard potential. The failure m
 prevents: a system that reliably and securely does something harmful (mass-deletes
 data, over-charges, actuates a device past a safe limit) because no one defined the
 safe envelope.
+
+## ⚠️ Disclaimer — read before anything else
+
+**LLM-generated hazard analysis, FMEA, and safety tests are a first-draft aid only.
+They are NOT a substitute for a certified functional-safety process or a qualified
+safety engineer, and must never be treated as safety assurance on their own.** In any
+regulated or safety-critical context (medical, automotive, industrial control,
+avionics, energy), every safety artifact and test result this skill produces MUST be
+reviewed, corrected, and signed off by a **qualified functional-safety engineer** under
+the governing standard (IEC 61508 / ISO 26262 / IEC 62304 / DO-178C) before it is
+relied upon. When hazard potential is unclear or the domain may be regulated, **escalate
+to a human safety owner — do not ship on the strength of this skill's output.** This is
+the one skill in this library whose over-trusted output can lead to real-world harm.
 
 ## Applicability — read first
 
@@ -96,6 +110,11 @@ generate safety theater.
 
 ```
 # Safety Analysis: {system}
+## ⚠️ Disclaimer & sign-off (MANDATORY, place at top)
+   - "Draft safety analysis generated with AI assistance — NOT certified safety
+      assurance. Requires review and sign-off by a qualified functional-safety
+      engineer under {governing standard} before use."
+   - Sign-off: [ ] Functional-safety owner: __________  Date: ______  Standard: ______
 ## Applicability decision (hazard potential; regulated standard in force?)
 ## Hazard Analysis / FMEA
    | Hazard ID | Failure mode | Effect | Sev | Likelihood | Detect | Mitigation | Test |

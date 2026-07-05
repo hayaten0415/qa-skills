@@ -8,8 +8,9 @@ description: >-
   "prompt injection," "jailbreak," "LLM-as-judge," "evals," "red team the chatbot," or
   shipping any feature built on an LLM. Produces an eval plan + OWASP LLM Top 10
   coverage (design mode) and eval/red-team suites, e.g. promptfoo/DeepEval/Ragas/garak
-  (implementation mode). Not for: classical ML models — use ml-system-testing.
-  Related: ml-system-testing, security-testing.
+  (implementation mode). Not for: non-LLM app/API pen-testing (auth bypass, SQLi,
+  dependency scans) — use security-testing; or classical/predictive ML models — use
+  ml-system-testing. Related: ml-system-testing, security-testing.
 license: MIT
 metadata:
   version: "1.0"

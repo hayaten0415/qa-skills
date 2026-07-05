@@ -5,14 +5,15 @@ description: >-
   PRD, feature spec, or codebase. Includes a mandatory quality-characteristics
   priority assessment covering all nine ISO 25010:2023 characteristics, test
   levels/types, entry/exit criteria, and risk-based scope. Use when: "test strategy,"
-  "テスト戦略," "QA plan," "testing approach," "what should we test," or any request
-  for test planning documentation. Not for: designing individual test cases — use the
-  test-design skills. Related: risk-based-testing, boundary-value-analysis.
+  "テスト戦略," "QA plan," "testing approach," "what's our overall testing approach,"
+  or any request for test planning documentation. Not for: prioritizing/sequencing
+  test effort under time pressure — use risk-based-testing; or designing individual
+  test cases — use the test-design skills. Related: risk-based-testing, boundary-value-analysis.
 license: MIT
 metadata:
   version: "1.0"
   istqb: "CTFL v4.0 §5.1"
-  iso25010: [all]
+  iso25010: [functional-suitability, performance-efficiency, compatibility, interaction-capability, reliability, security, maintainability, flexibility, safety]
   mode: [design]
 ---
 

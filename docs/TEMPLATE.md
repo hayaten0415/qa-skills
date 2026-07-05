@@ -72,8 +72,8 @@ Framework conventions, file placement, naming, and a short canonical code exampl
 `flexibility` / `safety`
 
 - 複数特性にまたがる場合は配列で列挙: `iso25010: [compatibility, flexibility]`
-- テスト戦略のように**全特性を横断的に評価する**スキルに限り、shorthand の
-  `iso25010: [all]` を許可する(9特性すべてを対象にする、の意)。
+- 全特性を横断するスキル(test-strategy-doc / risk-based-testing 等)も、機械可読性の
+  ため **9特性を明示列挙**する。`[all]` のような shorthand は使わない(CIが弾く)。
 
 > `metadata` / `license` はランタイムが解釈しない**ドキュメント規約**。実際に
 > トリガリングへ効くのは `name` と `description`(+ `when_to_use`)のみ。

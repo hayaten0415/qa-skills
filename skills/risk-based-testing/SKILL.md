@@ -13,7 +13,7 @@ license: MIT
 metadata:
   version: "1.0"
   istqb: "CTFL v4.0 §5.2"
-  iso25010: [all]
+  iso25010: [functional-suitability, performance-efficiency, compatibility, interaction-capability, reliability, security, maintainability, flexibility, safety]
   mode: [design]
 ---
 

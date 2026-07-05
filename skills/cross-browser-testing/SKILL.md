@@ -6,7 +6,7 @@ description: >-
   "クロスブラウザ," "works in Safari?", "mobile viewport testing," browser-specific
   bugs, or whenever a web app's E2E suite runs on only one browser. Covers the
   ISO 25010:2023 Compatibility characteristic (co-existence, interoperability of the
-  UI across engines). Not for: visual pixel diffs — use visual-regression-testing.
+  UI across engines). Not for: visual pixel diffs — use a dedicated visual-regression tool.
   Related: flexibility-testing.
 license: MIT
 metadata:

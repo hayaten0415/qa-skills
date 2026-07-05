@@ -8,8 +8,10 @@ description: >-
   scan," "penetration test scope," "SQL injection," "auth/access control testing,"
   "dependency/secrets scanning," or hardening a CI pipeline. Produces an ASVS-based
   test plan (design mode) and CI security gates — SAST/DAST/SCA/secrets scans
-  (implementation mode). Authorized/defensive testing only. Not for: infra/network
-  pen-testing of third parties. Related: test-strategy-doc, api-testing.
+  (implementation mode). Authorized/defensive testing only. Not for: LLM-specific
+  attacks (prompt injection, jailbreak, RAG red-teaming) — use llm-application-testing;
+  or infra/network pen-testing of third parties. Related: test-strategy-doc,
+  llm-application-testing.
 license: MIT
 metadata:
   version: "1.0"
@@ -126,7 +128,8 @@ endpoints. Verify tool/rule names against installed versions.
 
 ## Related Skills
 
-- `api-testing` — much of DAST/authz testing runs at the API layer.
+- `llm-application-testing` — LLM-specific attacks (prompt injection, RAG red-teaming);
+  hand off LLM features while this skill covers the classic app/API surface.
 - `test-strategy-doc` — sets the Security priority, ASVS level, and compliance drivers.
 
 ## References
