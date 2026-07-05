@@ -6,6 +6,24 @@ All notable changes to this skill library. Format loosely follows
 Per-skill versions live in each SKILL.md `metadata.version` and bump only when that
 skill's content changes.
 
+## [0.5.0]
+
+### Added
+- **ISTQB CTFL v4.0 process/collaboration skills** (2), primary-source verified:
+  `atdd-bdd-testing` (§4.5 — 3 C's, acceptance criteria in Given/When/Then/BDD and
+  rule-oriented formats, ATDD test-first) and `defect-report` (§5.5 — CTFL field set,
+  defect-report objectives, defect workflow).
+- Both carry an **Organization-specific inputs** section (piloting the org-injection
+  pattern): tracker fields / severity-priority scales / triage for defect-report;
+  story format / BDD tooling / Three Amigos for atdd-bdd-testing.
+- `evals/trigger-cases.md` — 24-prompt trigger-firing regression fixture.
+
+### Accuracy notes (from primary-source verification)
+- BDD + Given/When/Then ARE in CTFL v4.0 §4.5.2; "Gherkin" is NOT a syllabus term
+  (attributed to industry). INVEST appears only in the bibliography. ISO/IEC/IEEE
+  29119-3 is cited as the industry defect-report reference, not asserted as a v4.0 §5.5
+  citation.
+
 ## [0.4.0]
 
 ### Added

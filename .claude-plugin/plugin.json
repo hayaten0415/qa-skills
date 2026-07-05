@@ -1,6 +1,6 @@
 {
   "name": "qa-skills",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "ISTQB CTFL v4.0 and ISO/IEC 25010:2023 aligned QA skills for AI coding agents. Test design techniques, standards-traceable test strategy documents, and quality-characteristic testing across the nine 2023 characteristics. Each skill supports document generation and/or test implementation.",
   "author": { "name": "hayaten0415" },
   "keywords": [

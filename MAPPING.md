@@ -37,9 +37,11 @@
 | §4.2.3 デシジョンテーブルテスト | ブラックボックス技法 | decision-table-testing |
 | §4.2.4 状態遷移テスト | ブラックボックス技法 | state-transition-testing |
 | §4.4.2 探索的テスト | 経験ベース技法(SBTM) | exploratory-testing |
+| §4.5 協調ベースのアプローチ | ATDD、受入基準(Given/When/Then・BDD/ルール型)、3C's | atdd-bdd-testing |
 | §5.1 テスト計画 | テスト戦略、entry/exit criteria | test-strategy-doc |
 | §5.2 リスクマネジメント | リスクベースドテスト、プロダクトリスク分析 | risk-based-testing |
 | §5.3 テストモニタリング | メトリクス | (予定: qa-metrics) |
+| §5.5 欠陥マネジメント | バグレポート作成、欠陥ライフサイクル | defect-report |
 | CT-AI v2.0 | AIベースシステムのテスト(入力データ/モデル/開発、メタモルフィック、ドリフト、敵対的、GenAI §4.2) | ml-system-testing, llm-application-testing |
 
 ## AI/MLシステム × ISO/IEC 25059 × ISTQB CT-AI v2.0
