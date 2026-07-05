@@ -38,7 +38,13 @@ qa-skills/
     ├── boundary-value-analysis/SKILL.md
     ├── test-strategy-doc/SKILL.md
     ├── cross-browser-testing/SKILL.md
-    └── flexibility-testing/SKILL.md
+    ├── flexibility-testing/SKILL.md
+    ├── performance-testing/SKILL.md
+    ├── reliability-testing/SKILL.md
+    ├── accessibility-audit/SKILL.md
+    ├── security-testing/SKILL.md
+    ├── maintainability-review/SKILL.md
+    └── safety-analysis/SKILL.md
 ```
 
 ## スキルの構造
@@ -66,7 +72,7 @@ metadata:
 > (エージェントのトリガリング精度とポータビリティのため)。人間向けドキュメント
 > (README / MAPPING)は日本語。
 
-## 収録スキル(初期セット)
+## 収録スキル
 
 | スキル | ISO 25010:2023 | ISTQB | mode |
 |---|---|---|---|
@@ -74,6 +80,16 @@ metadata:
 | test-strategy-doc | 全9特性の優先度評価 | §5.1 | design |
 | cross-browser-testing | Compatibility(互換性) | §2.2.1 | impl |
 | flexibility-testing | Flexibility(柔軟性・旧移植性) | §2.2.1 | design + impl |
+| performance-testing | Performance Efficiency(性能効率性) | §2.2.1 / CT-PT | design + impl |
+| reliability-testing | Reliability(信頼性) | §2.2.1 | design + impl |
+| accessibility-audit | Interaction Capability(相互作用能力) | §2.2.1 | design + impl |
+| security-testing | Security(セキュリティ) | §2.2.1 | design + impl |
+| maintainability-review | Maintainability(保守性) | §2.2.1 | design + impl |
+| safety-analysis | Safety(安全性) | — | design + impl |
+
+ISO/IEC 25010:2023 の**9品質特性すべてに対応するスキルが揃った**(機能適合性・互換性・柔軟性は
+今後さらに技法を追加予定)。テスト設計技法(同値分割・デシジョンテーブル・状態遷移)と
+プロセス系(リスクベースドテスト・メトリクス)は引き続き拡充する。
 
 ## Installation
 
