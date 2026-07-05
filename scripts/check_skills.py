@@ -143,6 +143,19 @@ def main():
         if n not in readme:
             errors.append(f"{n}: not referenced in README.md")
 
+    # Trigger-eval coverage: every skill must appear in at least one case row (Expected
+    # or "Competes with" column) of the fixture — makes "add skill => add eval case" a
+    # CI-enforced contract, so the fixture stays a live spec, not a stale snapshot.
+    evals_path = os.path.join(ROOT, "evals", "trigger-cases.md")
+    if os.path.exists(evals_path):
+        with open(evals_path, encoding="utf-8") as fh:
+            case_rows = "".join(line for line in fh if line.lstrip().startswith("|"))
+        for n in names:
+            if n not in case_rows:
+                errors.append(f"{n}: no trigger-eval case in evals/trigger-cases.md")
+    else:
+        warnings.append("evals/trigger-cases.md not found — trigger-eval coverage unchecked")
+
     print(f"Checked {len(skill_paths)} skills.")
     missing = sorted(ALLOWED_ISO - covered)
     if missing:

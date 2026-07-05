@@ -36,6 +36,11 @@ text). Source of the current expectations: trigger-firing eval, 2026-07.
 | 22 | Does it run on ARM and on-prem? | flexibility-testing | cross-browser-testing | "ARM"/"on-prem" |
 | 23 | Does it work in Safari and mobile? | cross-browser-testing | flexibility-testing | "Safari"/"mobile" |
 | 24 | Fail-safe testing for our bulk-delete admin action | safety-analysis | reliability-testing | "fail-safe"/"destructive" |
+| 25 | Found a bug in checkout — write it up for Jira | defect-report | exploratory-testing | "write it up" = report, not find |
+| 26 | このバグの再現手順と重要度をまとめて起票したい | defect-report | — | "再現手順"/"起票" |
+| 27 | Turn this user story's acceptance criteria into Cucumber scenarios | atdd-bdd-testing | decision-table-testing | "acceptance criteria"/"Cucumber" |
+| 28 | 受入基準をGiven/When/Thenで書いて | atdd-bdd-testing | — | "受入基準"/"Given/When/Then" |
+| 29 | Discount rules: member×coupon×region — which combinations to test? | decision-table-testing | atdd-bdd-testing | "combinations" = decision table, not AC |
 
 ## Known ambiguous pairs (keep the disambiguating "Not for" clauses in sync)
 
@@ -47,3 +52,8 @@ text). Source of the current expectations: trigger-firing eval, 2026-07.
   (prompt injection, jailbreak, RAG); security = app/API pen-test (auth, injection sinks).
 - **safety-analysis ↔ reliability-testing** — "what happens if…". safety = harm from
   intentional/irreversible actions; reliability = infrastructure faults.
+- **defect-report ↔ exploratory-testing** — "a bug in the feature." exploratory = find
+  defects (charter/session); defect-report = document one found defect (write-up / 起票).
+- **atdd-bdd-testing ↔ decision-table-testing** — "conditions/combinations." atdd-bdd =
+  acceptance criteria from a user story (Given/When/Then); decision-table = test the
+  combinations of conditions.

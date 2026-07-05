@@ -6,6 +6,16 @@ All notable changes to this skill library. Format loosely follows
 Per-skill versions live in each SKILL.md `metadata.version` and bump only when that
 skill's content changes.
 
+## [0.6.0]
+
+### Added
+- **Trigger-eval coverage rule** in `check_skills.py`: every skill must appear in a
+  case row of `evals/trigger-cases.md`. Makes "add a skill ⇒ add an eval case" a
+  CI-enforced contract so the fixture stays a live spec, not a stale snapshot.
+- 5 new trigger cases (defect-report ×2, atdd-bdd-testing ×2, decision-table ×1) and
+  two ambiguous-pair notes: defect-report↔exploratory-testing (find vs document),
+  atdd-bdd-testing↔decision-table-testing (acceptance criteria vs condition combinations).
+
 ## [0.5.0]
 
 ### Added
