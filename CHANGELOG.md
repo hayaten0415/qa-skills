@@ -6,6 +6,25 @@ All notable changes to this skill library. Format loosely follows
 Per-skill versions live in each SKILL.md `metadata.version` and bump only when that
 skill's content changes.
 
+## [0.7.0]
+
+### Added
+- **Remaining ISTQB CTFL v4.0 chapters** (3 skills), primary-source verified:
+  - `static-review` (§3 Static Testing) — ISO/IEC 20246 review process, review types
+    (informal/walkthrough/technical review/inspection), roles, activities.
+  - `white-box-coverage` (§4.3) — statement & branch coverage (branch subsumes
+    statement); Foundation scope is statement+branch only.
+  - `qa-metrics` (§5.3) — the seven CTFL metric categories, test progress vs completion
+    reports (ISO/IEC/IEEE 29119-3).
+- Trigger cases 30–35 and three ambiguous-pair notes (static-review↔maintainability-
+  review, white-box-coverage↔maintainability-review, qa-metrics↔test-strategy-doc).
+
+### Changed
+- `maintainability-review` description now defers coverage to `white-box-coverage` and
+  work-product review to `static-review`.
+- README coverage declaration: CTFL v4.0 §3/§4.2/§4.3/§4.4/§4.5/§5.1/§5.2/§5.3/§5.5 now
+  all covered.
+
 ## [0.6.0]
 
 ### Added

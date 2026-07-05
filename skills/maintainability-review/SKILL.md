@@ -8,8 +8,10 @@ description: >-
   complexity," "test suite effectiveness," "why is coverage high but bugs still ship,"
   or reviewing code for change-risk. Produces a testability/maintainability review
   with objective metrics (design mode) and mutation-testing / static-analysis gates
-  (implementation mode). Not for: functional test-case design — use the test-design
-  skills. Related: boundary-value-analysis, test-strategy-doc.
+  (implementation mode). Not for: measuring statement/branch coverage — use
+  white-box-coverage; reviewing work products for defects — use static-review; or
+  functional test-case design — use the test-design skills. Related:
+  white-box-coverage, boundary-value-analysis, test-strategy-doc.
 license: MIT
 metadata:
   version: "1.0"

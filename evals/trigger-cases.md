@@ -41,6 +41,12 @@ text). Source of the current expectations: trigger-firing eval, 2026-07.
 | 27 | Turn this user story's acceptance criteria into Cucumber scenarios | atdd-bdd-testing | decision-table-testing | "acceptance criteria"/"Cucumber" |
 | 28 | 受入基準をGiven/When/Thenで書いて | atdd-bdd-testing | — | "受入基準"/"Given/When/Then" |
 | 29 | Discount rules: member×coupon×region — which combinations to test? | decision-table-testing | atdd-bdd-testing | "combinations" = decision table, not AC |
+| 30 | Review these requirements before we build them | static-review | — | "review" a work product for defects |
+| 31 | 設計レビュー／インスペクションの進め方を決めたい | static-review | maintainability-review | ISO 20246 review process |
+| 32 | Get branch coverage to 80% on the parser module | white-box-coverage | maintainability-review | "branch coverage" = structural |
+| 33 | どのコード行・分岐がテストされていない？ | white-box-coverage | — | coverage gap analysis |
+| 34 | Build a test progress dashboard and exit-criteria metrics | qa-metrics | test-strategy-doc | ongoing monitoring, not strategy |
+| 35 | テストの進捗と欠陥メトリクスをレポートにまとめたい | qa-metrics | — | progress/completion report |
 
 ## Known ambiguous pairs (keep the disambiguating "Not for" clauses in sync)
 
@@ -57,3 +63,12 @@ text). Source of the current expectations: trigger-firing eval, 2026-07.
 - **atdd-bdd-testing ↔ decision-table-testing** — "conditions/combinations." atdd-bdd =
   acceptance criteria from a user story (Given/When/Then); decision-table = test the
   combinations of conditions.
+- **static-review ↔ maintainability-review** — "code review." static-review = the review
+  process (ISO 20246) over any work product to find defects; maintainability-review =
+  assess code testability + test-suite effectiveness (mutation/complexity).
+- **white-box-coverage ↔ maintainability-review** — "coverage." white-box-coverage =
+  measure statement/branch coverage (what ran); maintainability-review = mutation testing
+  (whether the tests assert meaningfully).
+- **qa-metrics ↔ test-strategy-doc** — "metrics/quality gates." qa-metrics = ongoing
+  monitoring + progress/completion reports; test-strategy-doc = define gates/exit criteria
+  up front.
